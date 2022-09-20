@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+@livewireStyles()
     <!-- Styles -->
     @vite('resources/sass/app.scss')
 </head>
@@ -18,6 +18,7 @@
             @yield('content')
         </section>
     </main>
+    @livewireScripts()
 </body>
 
 </html>

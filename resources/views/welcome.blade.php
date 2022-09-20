@@ -49,28 +49,35 @@
                 </ul>
                 <div class="d-flex">
 
-                        <button class="btn btn-outline-dark" type="submit">
+                        <a class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                        </a>
 
 
-                    <button class="btn btn-outline-dark" type="submit">
+                    <a href="{{ route('register')}}" class="btn btn-outline-dark">
 
                         Buy Book
 
-                    </button>
-                    <button class="btn btn-outline-dark" type="submit">
+                    </a>
+                    <a  href="{{ route('seller.register') }}" class="btn btn-outline-dark" >
 
                         Sell Book
 
-                    </button>
+                    </a>
+
+
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"><span><i class="bi bi-box-arrow-in-right"></i></span>Login</a>
+                            {{-- <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"><span><i class="bi bi-box-arrow-in-right"></i></span>Login</a> --}}
+                                <button class="btn btn-outline-dark" type="submit" data-bs-toggle="dropdown">
+                                    <i class="bi bi-box-arrow-in-right"></i>
+                                    Login
+
+                                </button>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{ route('seller.login')}}">Book Seller</a></li>
                                 <li><a class="dropdown-item" href="{{ route('login')}}">Book Buyer</a></li>
