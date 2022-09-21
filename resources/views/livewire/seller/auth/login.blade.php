@@ -7,6 +7,11 @@
                     <div class="text-center text-md-center mb-4 mt-md-0">
                         <h1 class="mb-3 h3">{{ __('Welcome back') }}</h1>
                     </div>
+                    @if (session()->has('reg_message'))
+                    <div class="alert alert-success" role="alert">
+                       {{ session('reg_message') }}
+                      </div>
+                    @endif
 
                     <form class="mt-4" action="{{ route('login') }}" method="POST">
                         @csrf

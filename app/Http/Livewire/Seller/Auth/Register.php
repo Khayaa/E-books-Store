@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Seller\Auth;
 
+use App\Models\Seller;
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
 
 class Register extends Component
 {
@@ -30,5 +32,17 @@ class Register extends Component
     public function register()
     {
         $this->validate();
+        Seller::create([
+            'name' =>  $this->name,
+            'surname' => $this->surname ,
+            'email' => $this->email ,
+             'phone_number' =>$this->phone_number ,
+             'password' => Hash::make($this->password)
+
+
+
+        ]);
+        session()->flash('reg_message', 'Account successfully created.');
+        return redirect()->to('/seller/login');
     }
 }

@@ -1,6 +1,4 @@
-@extends('layouts.guest')
 
-@section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 d-flex align-items-center justify-content-center">
@@ -173,4 +171,4 @@
     </div>
     <br>
     <br>
-@endsection
+

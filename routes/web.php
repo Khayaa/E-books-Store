@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('seller')->name('seller.')->group(function (){
     Route::get('/login' ,  Login::class)->name('login');
-    Route::post('/register' ,  Register::class)->name('register');
+    Route::get('/register' ,  Register::class)->name('register');
 
 });
 
