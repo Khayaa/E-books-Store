@@ -21,7 +21,7 @@
     @include('layouts.sidenav')
     <main class="content">
         {{-- TopBar --}}
-        @include('layouts.topbar')
+        @include('layouts.admin.admin_topbar')
         @yield('content')
         {{-- Footer --}}
         @include('layouts.footer')

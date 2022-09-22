@@ -28,7 +28,7 @@
                                         </path>
                                     </svg>
                                 </span>
-                                <input wire:model="email" name="email" type="email" class="form-control" placeholder="{{ __('Email') }}"
+                                <input wire:model.defer="email" name="email" type="email" class="form-control" placeholder="{{ __('Email') }}"
                                     id="email" value="{{ old('email') }}" required autofocus>
                             </div>
                             @error('email')
@@ -50,7 +50,7 @@
                                             </path>
                                         </svg>
                                     </span>
-                                    <input wire:model="password" name="password" type="password" placeholder="{{ __('Password') }}"
+                                    <input wire:model.defer="password" name="password" type="password" placeholder="{{ __('Password') }}"
                                         class="form-control" id="password" required>
                                 </div>
                                 @error('password')
