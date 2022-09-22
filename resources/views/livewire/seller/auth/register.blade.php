@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 d-flex align-items-center justify-content-center">
-                <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500" wire:defer>
                     <div class="text-center text-md-center mb-4 mt-md-0">
                         <h1 class="mt-n3 mb-0 h3">{{ __('EBook-Store') }}</h1>
                         <br>
@@ -24,7 +24,7 @@
                                                     d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                             </svg>
                                         </span>
-                                        <input name="name" wire:model="name" id="name" type="text" class="form-control"
+                                        <input name="name" wire:model.defer="name" id="name" type="text" class="form-control"
                                             placeholder="{{ __('Name') }}" value="{{ old('name') }}" autofocus
                                             required>
                                     </div>
@@ -45,7 +45,7 @@
                                                     d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                             </svg>
                                         </span>
-                                        <input wire:model="surname" name="surname" id="surname" type="text" class="form-control"
+                                        <input wire:model.defer="surname" name="surname" id="surname" type="text" class="form-control"
                                             placeholder="{{ __('Surname') }}" value="{{ old('surname') }}" autofocus
                                             required>
                                     </div>
@@ -72,7 +72,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <input wire:model="email" name="email" id="email" type="email" class="form-control"
+                                        <input wire:model.defer="email" name="email" id="email" type="email" class="form-control"
                                             placeholder="{{ __('Email') }}" value="{{ old('email') }}" autofocus
                                             required>
                                     </div>
@@ -92,7 +92,7 @@
                                                     d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
                                             </svg>
                                         </span>
-                                        <input wire:model="phone_number" name="phone_number" id="phone_number" type="text"
+                                        <input wire:model.defer="phone_number" name="phone_number" id="phone_number" type="text"
                                             class="form-control" placeholder="{{ __('Phone number') }}"
                                             value="{{ old('phone_number') }}" autofocus required>
                                     </div>
@@ -121,7 +121,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <input wire:model="password" name="password" type="password" placeholder="{{ __('Password') }}"
+                                        <input wire:model.defer="password" name="password" type="password" placeholder="{{ __('Password') }}"
                                             class="form-control" id="password" required autocomplete="new-password">
                                     </div>
                                     @error('password')
@@ -142,7 +142,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <input wire:model="password_confirmation" name="password_confirmation" type="password"
+                                        <input wire:model.defer="password_confirmation" name="password_confirmation" type="password"
                                             placeholder="{{ __('Confirm Password') }}" class="form-control"
                                             id="password_confirmation" required>
                                     </div>
@@ -155,14 +155,18 @@
 
                         <!-- End of Form -->
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-gray-800">{{ __('Register') }}</button>
+                            <button type="submit" class="btn btn-gray-800">
+                                <div wire:loading>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                </div>&nbsp;
+                                {{ __('Register') }}</button>
                         </div>
                     </form>
 
                     <div class="d-flex justify-content-center align-items-center mt-4">
                         <span class="fw-normal">
                             {{ __('Already have an account?') }}
-                            <a href="{{ route('login') }}" class="fw-bold">{{ __('Login here') }}</a>
+                            <a href="{{ route('seller.login') }}" class="fw-bold">{{ __('Login here') }}</a>
                         </span>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
-@extends('layouts.guest')
-@section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                     <div class="text-center text-md-center mb-4 mt-md-0">
-                        <h1 class="mb-3 h3">{{ __('Welcome back') }}</h1>
+                        <h1 class="mb-3 h3">{{ __('EBook-Store') }}</h1>
+                        <h1 class="mb-3 h5">{{ __('Welcome back') }}</h1>
                     </div>
                     @if (session()->has('reg_message'))
                     <div class="alert alert-success" role="alert">
@@ -13,7 +13,7 @@
                       </div>
                     @endif
 
-                    <form class="mt-4" action="{{ route('login') }}" method="POST">
+                    <form class="mt-4" wire:submit.prevent="login" method="POST">
                         @csrf
                         <!-- Form -->
                         <div class="form-group mb-4">
@@ -28,7 +28,7 @@
                                         </path>
                                     </svg>
                                 </span>
-                                <input name="email" type="email" class="form-control" placeholder="{{ __('Email') }}"
+                                <input wire:model="email" name="email" type="email" class="form-control" placeholder="{{ __('Email') }}"
                                     id="email" value="{{ old('email') }}" required autofocus>
                             </div>
                             @error('email')
@@ -50,7 +50,7 @@
                                             </path>
                                         </svg>
                                     </span>
-                                    <input name="password" type="password" placeholder="{{ __('Password') }}"
+                                    <input wire:model="password" name="password" type="password" placeholder="{{ __('Password') }}"
                                         class="form-control" id="password" required>
                                 </div>
                                 @error('password')
@@ -59,32 +59,38 @@
                             </div>
                             <!-- End of Form -->
                             <div class="d-flex justify-content-between align-items-top mb-4">
-                                <div class="form-check">
+                                {{-- <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
                                     <label class="form-check-label mb-0" for="remember">
                                         {{ __('Remember me') }}
                                     </label>
-                                </div>
-                                <div>
+                                </div> --}}
+                                {{-- <div>
                                     <a href="{{ route('password.request') }}" class="small text-right">
                                         {{ __('Lost password?') }}
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-gray-800">{{ __('Sign in') }}</button>
+                            <button type="submit" class="btn btn-gray-800">
+                                <div wire:loading>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                </div>&nbsp;
+                                {{ __('Sign in') }}
+
+                            </button>
                         </div>
                     </form>
                     <div class="d-flex justify-content-center align-items-center mt-4">
                         <span class="fw-normal">
                             {{ __('Not registered?') }}
-                            <a href="{{ route('register') }}" class="fw-bold">{{ __('Create account') }}</a>
+                            <a href="{{ route('seller.register') }}" class="fw-bold">{{ __('Create account') }}</a>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+

@@ -28,7 +28,7 @@ class Login extends Component
             'password' => 'required',
         ]);
 
-        if (Auth::guard('session')->attempt($credentials)) {
+        if (Auth::guard('seller')->attempt($credentials)) {
             session()->regenerate();
 
             return redirect()->intended('seller/dashboard');

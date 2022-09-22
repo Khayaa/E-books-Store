@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Livewire\Seller\Auth\Login;
+use App\Http\Livewire\Seller\Auth\Logout;
 use App\Http\Livewire\Seller\Auth\Register;
+use App\Http\Livewire\Seller\Dashboard;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +27,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('seller')->name('seller.')->group(function (){
-    Route::get('/login' ,  Login::class)->name('login');
-    Route::get('/register' ,  Register::class)->name('register');
+    Route::middleware('guest:seller')->group(function (){
+        Route::get('/login' ,  Login::class)->name('login');
+        Route::get('/register' ,  Register::class)->name('register');
+
+    });
+    Route::middleware('auth:seller')->group(function (){
+        Route::get('/dashboard' , Dashboard::class)->name('dashboard');
+        Route::post('/logout', Logout::class)->name('logout');
+    });
+
+
 
 });
 

@@ -22,9 +22,31 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+
+
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if($guard === 'admin'){
+                    return redirect()->route('admin.dashboard');
+                }elseif($guard === 'seller'){
+                    return redirect()->to('/seller/dashboard');
+                }else{
+                    return redirect()->to('/home');
+                }
+
+
             }
+            // if($guard == 'seller'){
+            //     return redirect()->to('seller/dashboard');
+            //     if (Auth::guard($guard)->check()) {
+            //         return redirect()->to('seller/dashboard');
+            //     }
+            // }elseif($guard == 'admin'){
+            //     if (Auth::guard($guard)->check()) {
+            //         return redirect()->to('admin/dashboard');
+            //     }
+            // }else{
+            //     return redirect(RouteServiceProvider::HOME);
+            // }
         }
 
         return $next($request);
