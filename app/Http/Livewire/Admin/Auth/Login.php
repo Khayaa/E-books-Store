@@ -11,7 +11,7 @@ class Login extends Component
     public $password;
 
     protected $rules = [
-       
+
         'email'=> ['required', 'email'],
         'password'=>'required',
     ];
