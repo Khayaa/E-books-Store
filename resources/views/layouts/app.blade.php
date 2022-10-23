@@ -8,8 +8,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    @vite('resources/sass/app.scss')
+    {{-- <!-- Styles -->
+    @vite('resources/sass/app.scss') --}}
 
     <!-- Scripts -->
     @vite('resources/js/app.js')

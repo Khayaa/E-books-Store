@@ -17,7 +17,7 @@
 
     <!-- Styles -->
     {{-- @vite('resources/sass/app.scss') --}}
-
+    @vite('resources/js/app.js')
     <!-- Scripts -->
     {{-- @vite('resources/js/app.js') --}}
 </head>

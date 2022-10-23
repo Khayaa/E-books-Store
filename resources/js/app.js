@@ -1,4 +1,5 @@
 import "bootstrap";
+import '../css/app.css'; 
 import "simplebar";
 import SmoothScroll from "smooth-scroll";
 
