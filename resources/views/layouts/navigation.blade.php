@@ -165,7 +165,7 @@
 <ul class="nav flex-column pt-3 pt-md-0">
     <li class="nav-item">
         <a href="{{ route('admin.dashboard') }}" class="nav-link d-flex align-items-center">
-            
+
             <span class="mt-1 ms-1 sidebar-text">
                EBook-Store
             </span>

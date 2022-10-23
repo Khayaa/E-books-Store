@@ -19,13 +19,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('author');
             $table->longText('description');
+            $table->unsignedBigInteger('seller_id');
             $table->enum('book_type',['Hardcopy','softcopy']);
             $table->longText('condition');
             $table->double('price');
             $table->enum('status',['instock' ,'outofstock']);
             $table->boolean('availability')->default(1);
             $table->boolean('is_approved')->default(0);
-            
+            $table->foreign('seller_id')->references('id')->on('sellers');
+
 
 
 
