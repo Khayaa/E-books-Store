@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Seller extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory;
 
     /**
      * The attributes that are mass assignable.
